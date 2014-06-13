@@ -21,7 +21,7 @@ var ajaxcart = {
         try {
             if(typeof obj == 'string') {
                 var url = obj;
-
+                url = url.replace(/http:/, location.protocol);
                 new Ajax.Request(url, {
                     onCreate	: function() {
                         _this.g.warn("Processing", {
@@ -131,7 +131,7 @@ var ajaxcart = {
 
                     var url	 = 	obj.form.action,
                     data =	obj.form.serialize();
-
+                    url = url.replace(/http:/, location.protocol);
                     new Ajax.Request(url, {
                         method		: 'post',
                         postBody	: data,
@@ -186,6 +186,7 @@ var ajaxcart = {
     
     getConfigurableOptions: function(url) {
         var _this = this;
+        url = url.replace(/http:/, location.protocol);
         new Ajax.Request(url, {
             onCreate	: function() {
                 _this.g.warn("Processing", {
